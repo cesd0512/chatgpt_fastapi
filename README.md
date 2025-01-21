@@ -15,9 +15,6 @@
   - [Login](#login)
   - [Init User](#init-user)
   - [Health](#health)
-  - [Schemas](#schemas)
-    - [Properties](#properties)
-    - [Properties](#properties-1)
 
 
 
@@ -118,20 +115,14 @@ uvicorn main:app --reload --port 5000
 
 ## Get Chat Messages By User
 
-<a id="opIdget_chat_messages_by_user_chat_messages_history__username__get"></a>
 
 > Code samples
 
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'Authorization': 'Bearer {access-token}'
-}
-
-r = requests.get('/chat_messages/history/{username}', headers = headers)
-
-print(r.json())
+```bash
+curl -X 'GET' \
+  'http://localhost:5000/chat_messages/history/{{username}}' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer 1231211312dfdageweds'
 
 ```
 
@@ -160,15 +151,6 @@ Endpoint for get messages's user.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Response|Inline|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|Validation Error|[HTTPValidationError](#schemahttpvalidationerror)|
 
-<h3 id="get-chat-messages-by-user-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-*Response Get Chat Messages By User Chat Messages History  Username  Get*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 JWTBearer
@@ -180,18 +162,12 @@ JWTBearer
 
 > Code samples
 
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'Authorization': 'Bearer {access-token}'
-}
-
-r = requests.post('/chat_messages/ask', params={
-  'username': 'string',  'message': 'string'
-}, headers = headers)
-
-print(r.json())
+```bash
+curl -X 'POST' \
+  'http://localhost:5000/chat_messages/ask?username={{username}}&message=dime%20que%20riesgos%20sicosociales%20hay' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' \
+  -d ''
 
 ```
 
@@ -221,15 +197,6 @@ Endpoint for create and save message.
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Successful Response|Inline|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|Validation Error|[HTTPValidationError](#schemahttpvalidationerror)|
 
-<h3 id="create-message-responseschema">Response Schema</h3>
-
-Status Code **201**
-
-*Response Create Message Chat Messages Ask Post*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 JWTBearer
@@ -239,20 +206,18 @@ JWTBearer
 
 ## Login
 
-<a id="opIdlogin_login_post"></a>
 
 > Code samples
 
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json'
-}
-
-r = requests.post('/login', headers = headers)
-
-print(r.json())
+```bash
+curl -X 'POST' \
+  'http://localhost:5000/login' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": {{username}},
+  "password": "{{password}}"
+}'
 
 ```
 
@@ -298,20 +263,18 @@ This operation does not require authentication
 
 ## Init User
 
-<a id="opIdinit_user_init_user_post"></a>
 
 > Code samples
 
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json'
-}
-
-r = requests.post('/init_user', headers = headers)
-
-print(r.json())
+```bash
+curl -X 'POST' \
+  'http://localhost:5000/init_user' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": {{username}},
+  "password": {{password}}
+}'
 
 ```
 
@@ -359,20 +322,13 @@ This operation does not require authentication
 
 ## Health
 
-<a id="opIdhealth_health_get"></a>
 
 > Code samples
 
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('/health', headers = headers)
-
-print(r.json())
-
+```bash
+curl -X 'GET' \
+  'http://localhost:5000/health' \
+  -H 'accept: application/json'
 ```
 
 `GET /health`
@@ -398,79 +354,5 @@ null
 <aside class="success">
 This operation does not require authentication
 </aside>
-
-## Schemas
-
-<h2 id="tocS_HTTPValidationError">HTTPValidationError</h2>
-<!-- backwards compatibility -->
-<a id="schemahttpvalidationerror"></a>
-<a id="schema_HTTPValidationError"></a>
-<a id="tocShttpvalidationerror"></a>
-<a id="tocshttpvalidationerror"></a>
-
-```json
-{
-  "detail": [
-    {
-      "loc": [
-        "string"
-      ],
-      "msg": "string",
-      "type": "string"
-    }
-  ]
-}
-
-```
-
-HTTPValidationError
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|detail|[[ValidationError](#schemavalidationerror)]|false|none|none|
-
-<h2 id="tocS_User">User</h2>
-<!-- backwards compatibility -->
-<a id="schemauser"></a>
-<a id="schema_User"></a>
-<a id="tocSuser"></a>
-<a id="tocsuser"></a>
-
-```json
-{
-  "username": "Chat gpt saludo.",
-  "password": "Chat gpt saludo."
-}
-
-```
-
-User
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|id|integer|false|none|none|
-|username|string|true|none|none|
-|password|string|true|none|none|
-|rol_id|integer|false|none|none|
-
-<h2 id="tocS_ValidationError">ValidationError</h2>
-<!-- backwards compatibility -->
-<a id="schemavalidationerror"></a>
-<a id="schema_ValidationError"></a>
-<a id="tocSvalidationerror"></a>
-<a id="tocsvalidationerror"></a>
-
-```json
-{
-  "loc": [
-    "string"
-  ],
-  "msg": "string",
-  "type": "string"
-}
 
 ```
