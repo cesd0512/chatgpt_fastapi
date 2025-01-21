@@ -6,6 +6,7 @@
   - [Create virtual environment](#create-virtual-environment)
   - [Prerequisites](#prerequisites)
   - [Unit Testing](#unit-testing)
+  - [Create Environment Varibles.](#create-environment-varibles)
   - [Run Project](#run-project)
 - [API Reference](#api-reference)
   - [Authentication](#authentication)
@@ -86,6 +87,18 @@ coverage run -m pytest -v
 coverage report -m
 # Generar xml coverage con el reporte
 coverage xml
+```
+
+## Create Environment Varibles.
+
+For correct operation, the following environment variables must be created:
+
+```bash
+SECRET_KEY: Secret for hashing passwords.
+
+PWD_ADMIN: Password for user admin.
+
+OPENAI_API_KEY: Api key for connect OpenAI API.
 ```
 
 ## Run Project
