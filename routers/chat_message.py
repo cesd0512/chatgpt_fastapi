@@ -50,5 +50,6 @@ def create_message(username: str, message: str) -> JSONResponse:
         status_code=201,
         content={
             "message": "Message saved successful",
-            "message_id": message_id
+            "message_id": message_id,
+            "response": response_openai
         })
