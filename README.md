@@ -240,13 +240,6 @@ Start session with user.
 |---|---|---|---|---|
 |body|body|[User](#schemauser)|true|none|
 
-> Example responses
-
-> 200 Response
-
-```json
-null
-```
 
 <h3 id="login-responses">Responses</h3>
 
@@ -297,13 +290,6 @@ Register new user in database.
 |---|---|---|---|---|
 |body|body|[User](#schemauser)|true|none|
 
-> Example responses
-
-> 200 Response
-
-```json
-null
-```
 
 <h3 id="init-user-responses">Responses</h3>
 
@@ -355,4 +341,3 @@ null
 This operation does not require authentication
 </aside>
 
-```
