@@ -1,4 +1,5 @@
 __pycache__
 venv
-database.sqlite
 .venv
+database.sqlite
+.env
