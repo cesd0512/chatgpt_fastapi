@@ -1,8 +1,8 @@
-
 # Chat GPT API v1.0.0
 
 - [Chat GPT API v1.0.0](#chat-gpt-api-v100)
   - [Introduction](#introduction)
+  - [Sequence Diagram](#sequence-diagram)
   - [Create virtual environment](#create-virtual-environment)
   - [Prerequisites](#prerequisites)
   - [Unit Testing](#unit-testing)
@@ -16,13 +16,14 @@
   - [Init User](#init-user)
   - [Health](#health)
 
-
-
 ## Introduction
 
 This project implements a REST API developed with FastAPI and executed using Uvicorn. Its main functionality is the management of users with roles and the ability to ask questions related to occupational health topics. These questions are processed using the OpenAI Chat Completions API, which generates accurate and relevant answers.
 The application uses a SQLite database, which is automatically initialized at system startup, facilitating a fast and hassle-free testing environment.
 
+## Sequence Diagram
+
+![1737482006777](image/README/1737482006777.png)
 
 ## Create virtual environment
 
@@ -31,7 +32,6 @@ Command to create virtual environment.
 ```bash
 python3 -m venv .venv
 ```
-
 
 ## Prerequisites
 
@@ -101,6 +101,7 @@ OPENAI_API_KEY: Api key for connect OpenAI API.
 ## Run Project
 
 Command to run the project within the virtual environment:
+
 ```bash
 uvicorn main:app --reload --port 5000
 ```
@@ -109,12 +110,11 @@ uvicorn main:app --reload --port 5000
 
 ## Authentication
 
-- HTTP Authentication, scheme: bearer 
+- HTTP Authentication, scheme: bearer
 
 <h1 id="chat-gpt-api-messages">messages</h1>
 
 ## Get Chat Messages By User
-
 
 > Code samples
 
@@ -132,9 +132,9 @@ Endpoint for get messages's user.
 
 <h3 id="get-chat-messages-by-user-parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|username|path|string|true|none|
+| Name     | In   | Type   | Required | Description |
+| -------- | ---- | ------ | -------- | ----------- |
+| username | path | string | true     | none        |
 
 > Example responses
 
@@ -146,10 +146,10 @@ Endpoint for get messages's user.
 
 <h3 id="get-chat-messages-by-user-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Response|Inline|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|Validation Error|[HTTPValidationError](#schemahttpvalidationerror)|
+| Status | Meaning                                                               | Description         | Schema                                         |
+| ------ | --------------------------------------------------------------------- | ------------------- | ---------------------------------------------- |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                  | Successful Response | Inline                                         |
+| 422    | [Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3) | Validation Error    | [HTTPValidationError](#schemahttpvalidationerror) |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -158,7 +158,7 @@ JWTBearer
 
 ## Create Message
 
-<a id="opIdcreate_message_chat_messages_ask_post"></a>
+`<a id="opIdcreate_message_chat_messages_ask_post"></a>`
 
 > Code samples
 
@@ -177,10 +177,10 @@ Endpoint for create and save message.
 
 <h3 id="create-message-parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|username|query|string|true|none|
-|message|query|string|true|none|
+| Name     | In    | Type   | Required | Description |
+| -------- | ----- | ------ | -------- | ----------- |
+| username | query | string | true     | none        |
+| message  | query | string | true     | none        |
 
 > Example responses
 
@@ -192,10 +192,10 @@ Endpoint for create and save message.
 
 <h3 id="create-message-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Successful Response|Inline|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|Validation Error|[HTTPValidationError](#schemahttpvalidationerror)|
+| Status | Meaning                                                               | Description         | Schema                                         |
+| ------ | --------------------------------------------------------------------- | ------------------- | ---------------------------------------------- |
+| 201    | [Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)             | Successful Response | Inline                                         |
+| 422    | [Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3) | Validation Error    | [HTTPValidationError](#schemahttpvalidationerror) |
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -205,7 +205,6 @@ JWTBearer
 <h1 id="chat-gpt-api-auth">auth</h1>
 
 ## Login
-
 
 > Code samples
 
@@ -236,17 +235,16 @@ Start session with user.
 
 <h3 id="login-parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[User](#schemauser)|true|none|
-
+| Name | In   | Type             | Required | Description |
+| ---- | ---- | ---------------- | -------- | ----------- |
+| body | body | [User](#schemauser) | true     | none        |
 
 <h3 id="login-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Response|Inline|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|Validation Error|[HTTPValidationError](#schemahttpvalidationerror)|
+| Status | Meaning                                                               | Description         | Schema                                         |
+| ------ | --------------------------------------------------------------------- | ------------------- | ---------------------------------------------- |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                  | Successful Response | Inline                                         |
+| 422    | [Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3) | Validation Error    | [HTTPValidationError](#schemahttpvalidationerror) |
 
 <h3 id="login-responseschema">Response Schema</h3>
 
@@ -255,7 +253,6 @@ This operation does not require authentication
 </aside>
 
 ## Init User
-
 
 > Code samples
 
@@ -286,17 +283,16 @@ Register new user in database.
 
 <h3 id="init-user-parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[User](#schemauser)|true|none|
-
+| Name | In   | Type             | Required | Description |
+| ---- | ---- | ---------------- | -------- | ----------- |
+| body | body | [User](#schemauser) | true     | none        |
 
 <h3 id="init-user-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Response|Inline|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|Validation Error|[HTTPValidationError](#schemahttpvalidationerror)|
+| Status | Meaning                                                               | Description         | Schema                                         |
+| ------ | --------------------------------------------------------------------- | ------------------- | ---------------------------------------------- |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                  | Successful Response | Inline                                         |
+| 422    | [Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3) | Validation Error    | [HTTPValidationError](#schemahttpvalidationerror) |
 
 <h3 id="init-user-responseschema">Response Schema</h3>
 
@@ -307,7 +303,6 @@ This operation does not require authentication
 <h1 id="chat-gpt-api-health">health</h1>
 
 ## Health
-
 
 > Code samples
 
@@ -331,13 +326,12 @@ null
 
 <h3 id="health-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Response|Inline|
+| Status | Meaning                                              | Description         | Schema |
+| ------ | ---------------------------------------------------- | ------------------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Successful Response | Inline |
 
 <h3 id="health-responseschema">Response Schema</h3>
 
 <aside class="success">
 This operation does not require authentication
 </aside>
-
